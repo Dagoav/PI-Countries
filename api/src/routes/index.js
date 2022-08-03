@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 
 
 router.use("/countries", country);
-router.use("/activity", activity);
+router.use("/activities", activity);
 router.use("/bulk", bulk);
 
 

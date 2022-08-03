@@ -4,8 +4,7 @@ const { Country } = require("../db.js")
 const axios = require("axios");
 
 
-let ApiAll = "https://restcountries.com/v3/all"
-let ApiName = "https://restcountries.com/v3/name"
+let apiURL = "https://restcountries.com/v3"
 
 
 // poner auth a bulk
@@ -16,8 +15,7 @@ router.get("/", async (req, res) => {
     }
 
     try {
-
-        let data = await axios.get(ApiAll).then(response => response.data);
+        let data = await axios.get(`${apiURL}/all`).then(response => response.data);
         let data_format = data.map(d => ({
             id: d.cioc ? d.cioc : d.cca3,
             name: d.name.common,
@@ -32,7 +30,7 @@ router.get("/", async (req, res) => {
         await Country.bulkCreate(data_format)
         result.success = true;
         result.message = "Países agregados a bd"
-        res.json(result)
+        res.json(data_format)
 
     } catch (erorr) {
         res.status(500).json(erorr)
@@ -41,7 +39,7 @@ router.get("/", async (req, res) => {
 
 
 // Agregar un país
-router.get("/code/:code", async (req, res) => {
+router.get("/:code", async (req, res) => {
     let result = {
         success: false,
         message: ""
@@ -49,7 +47,7 @@ router.get("/code/:code", async (req, res) => {
 
     try {
         let { code } = req.params
-        let data = await axios.get(`${ApiName}/${code}`).then(response => response.data);
+        let data = await axios.get(`${apiURL}/name/${code}`).then(response => response.data);
         let data_format = data.map(d => ({
             id: d.cioc ? d.cioc : d.cca3,
             name: d.name.common,
@@ -70,5 +68,6 @@ router.get("/code/:code", async (req, res) => {
         res.status(500).json(erorr)
     }
 })
+
 
 module.exports = router;

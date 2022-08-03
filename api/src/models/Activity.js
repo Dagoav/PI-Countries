@@ -2,12 +2,12 @@ const { DataTypes } = require('sequelize')
 
 module.exports = (sequelize) => {
     sequelize.define('activity', {
-        id: {
-            type: DataTypes.CHAR(3),
-            unique: true,
-            allowNull: false,
-            primaryKey: true,
-        },
+        // id: {
+        //     type: DataTypes.CHAR(3),
+        //     unique: true,
+        //     allowNull: false,
+        //     primaryKey: true,
+        // },
         name: {
             type: DataTypes.STRING
         },
@@ -21,7 +21,10 @@ module.exports = (sequelize) => {
             }
         },
         duration: {
-            type: DataTypes.INTEGER
+            type: DataTypes.INTEGER,
+            validate: {
+                min: 1,
+            }
         },
         season: {
             type: DataTypes.ENUM("summer", "spring", "autumn", "winter")
