@@ -9,12 +9,14 @@ module.exports = (sequelize) => {
         //     primaryKey: true,
         // },
         name: {
-            type: DataTypes.STRING
+            type: DataTypes.STRING,
+            unique: 'compositeIndex'
         },
         dificulty: {
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: null,
+            unique: 'compositeIndex',
             validate: {
                 min: 1,
                 max: 5
@@ -22,12 +24,14 @@ module.exports = (sequelize) => {
         },
         duration: {
             type: DataTypes.INTEGER,
+            unique: 'compositeIndex',
             validate: {
                 min: 1,
             }
         },
         season: {
-            type: DataTypes.ENUM("summer", "spring", "autumn", "winter")
+            type: DataTypes.ENUM("summer", "spring", "autumn", "winter"),
+            unique: 'compositeIndex'
         }
     }, {
         timestamps: false

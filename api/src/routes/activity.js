@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
             season
         });
 
-        res.json(newActivity);
+        res.status(201).json(newActivity);
     } catch (error) {
         res.status(500).send(error);
     }
