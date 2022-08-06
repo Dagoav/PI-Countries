@@ -1,0 +1,72 @@
+.bkg-welcome {
+  height: 90vh;
+  background: url("../../assets/OJO4YQ0.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  background-size: 1000px;
+}
+
+.btn-w {
+  border: 1px solid #686969;
+  background-color: #727070;
+  color: #ffffff;
+  padding: 5px 10px;
+  padding-bottom: 10px;
+  border-radius: 8px;
+  transition: 600ms all;
+}
+
+.btn-w:hover {
+  cursor: pointer;
+  border: 1px solid rgb(130, 194, 170);
+  background-color: rgb(130, 194, 170);
+  transition: color 600ms all;
+}
+
+.arrow_forward {
+  position: relative;
+  top: 5px;
+}
+
+.boxTitle-welcome {
+  position: relative;
+  top: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: 500ms all;
+  /* background-color: aliceblue; */
+}
+
+.title-welcome {
+  width: 0;
+  background-color: #696969;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(38) 1s 1 normal both, blink 1s steps(1) infinite;
+  transition: 500ms all;
+}
+
+.title-welcome:hover {
+  cursor: pointer;
+  background-color: transparent;
+  transition: 500ms all;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+    color: #a8a7a7;
+  }
+  50% {
+    width: 50%;
+    color: rgb(120, 187, 214);
+  }
+  100% {
+    width: 100%;
+    color: rgb(130, 194, 170);
+  }
+}

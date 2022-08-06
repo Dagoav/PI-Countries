@@ -1,0 +1,17 @@
+.bkg-main {
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  background: url("../../assets/80911.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  /* filter: saturate(10) */
+}
+
+/* .box {
+  padding: 20px;
+  background-color: rgb(75, 74, 78);
+  color: white;
+} */

@@ -30,7 +30,7 @@ router.get("/", async (req, res) => {
         await Country.bulkCreate(data_format)
         result.success = true;
         result.message = "Países agregados a bd"
-        res.json(data_format)
+        res.json(result)
 
     } catch (erorr) {
         res.status(500).json(erorr)

@@ -51,12 +51,29 @@ router.post("/byCountry", async (req, res) => {
             res.json(result)
         }
 
-
+        res.json(result)
     } catch (error) {
         res.status(500).send(error)
     }
 })
 
+// router.post("/", async (req, res) => {
+//     const {name, difficulty, duration, season, countriesId} = req.body;
+//     try {
+//         const newActivity = await Activity.create({
+//             name: name,
+//             difficulty: difficulty,
+//             duration: duration,
+//             season: season,
+//         });
 
+//         newActivity.addCountry(countriesId);
+//         // res.json(newActivity);
+//         // status 201 -> creado
+//         res.status(201).send(newActivity);
+//     } catch(e) {
+//         res.status(500).send(e);
+//     }
+// });
 
 module.exports = router;
