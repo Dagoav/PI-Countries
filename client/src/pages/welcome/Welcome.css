@@ -46,7 +46,7 @@
   background-color: #696969;
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 3s steps(38) 1s 1 normal both, blink 1s steps(1) infinite;
+  animation: typing 2500ms steps(38) 1s 1 normal both, blink 1s steps(1) infinite;
   transition: 500ms all;
 }
 

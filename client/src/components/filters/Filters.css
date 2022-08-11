@@ -1,0 +1,33 @@
+.filters {
+  display: flex;
+  position: fixed;
+  top: 90px;
+  left: 30px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-radius: 8px;
+}
+
+.primary-filter {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgb(223, 222, 222);
+  transition: ease-out 500ms;
+}
+
+.secondary-filter {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgb(223, 222, 222);
+  transition: ease-out 500ms;
+}
+
+/* .activity-filter:hover,
+.country-filter:hover {
+  transform: translateX(20px);
+  transition: ease 500ms;
+  cursor: pointer;
+} */

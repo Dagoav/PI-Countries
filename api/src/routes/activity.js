@@ -3,6 +3,17 @@ const router = Router();
 const { Activity, Country, country_activity } = require('../db.js')
 
 
+
+router.get("/", async (req, res) => {
+    try {
+        const activities = await Activity.findAll()
+        res.json(activities)
+    } catch (error) {   
+        res.status(500).send(error);
+    }
+})
+
+
 router.post("/", async (req, res) => {
     const { name, dificulty, duration, season } = req.body;
     try {
@@ -29,7 +40,7 @@ router.post("/byCountry", async (req, res) => {
 
     try {
         const activity = await Activity.findOne({
-            where: { id: parseInt(id) }
+            where: { id: Number(id) }
         });
 
         const country = await Country.findOne({

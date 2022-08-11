@@ -1,4 +1,6 @@
 .navbar {
+  width: 100%;
+  position: fixed;
   height: 60px;
   display: grid;
   grid-template-columns: 1fr 4fr 2fr;
@@ -6,6 +8,7 @@
   background-color: #c5c3c357;
   border-radius: 8px;
   transition: ease-out 600ms;
+  z-index: 10;
 }
 
 .navbar:hover {
@@ -46,7 +49,8 @@
   border: 1px solid #d3d4d4;
   background-color: #c5c3c357;
   color: #ffffff;
-  font-weight: 500;
+  font-weight: 300;
+  font-size: 12px;
   padding: 5px 10px;
   margin: 0px 18px;
   border-radius: 8px;
@@ -69,11 +73,13 @@
   width: 150px;
   border: none;
   border-radius: 8px;
-  font-weight: 500;
-  padding: 10px;
+  font-weight: 300;
+  padding: 9px;
   padding-left: 20px;
   padding-right: 50px;
-  color: #7cabbd;
+  /* color: #7cabbd; */
+  /* color: rgb(63, 136, 141); */
+  color: rgb(59, 89, 92);
   transition: ease-out 500ms;
   box-shadow: 2px 2px 10px 2px #a8a6a6af;
 }
@@ -89,7 +95,7 @@
   position: relative;
   right: 10px;
   display: flex;
-  padding: 8px;
+  padding: 9px;
   border-radius: 8px;
   justify-content: space-evenly;
   background-color: #646363;
@@ -109,10 +115,10 @@
   cursor: pointer;
   user-select: none;
 }
-.icon-search:hover {
+/* .icon-search:hover {
   transform: scale(1.5);
   transition: all 500ms;
-}
+} */
 
 .icon-close:hover {
   color: #d43f3a;

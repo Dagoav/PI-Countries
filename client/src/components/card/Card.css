@@ -1,0 +1,78 @@
+.card-box {
+  width: 170px;
+  position: relative;
+  height: 175px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: rgba(125, 136, 143, 0.15);
+  backdrop-filter: blur(3px);
+  box-shadow: 2px 2px 8px 4px rgba(177, 175, 175, 0.486);
+  transition: ease 400ms;
+}
+
+.card-box:hover {
+  cursor: pointer;
+  /* backdrop-filter: blur(3px); */
+  transition: ease 400ms;
+}
+
+.flag-box {
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-box img {
+  width: 144px;
+  height: 90px;
+  filter: opacity(0.2) grayscale(85%);
+  transition: ease-in 1000ms;
+}
+
+.card-box img:hover {
+  filter: opacity(0.8) grayscale(10%);
+  transition: ease 500ms;
+}
+
+.card-title-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  word-break: break-all;
+  overflow: hidden;
+}
+
+.country-name {
+  margin-top: 20px;
+  font-weight: 500;
+}
+
+.continent {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.continent-name {
+  font-weight: 500;
+}
+
+.circleColor {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  bottom: 13px;
+  left: 10px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  filter: saturate(90%);
+}

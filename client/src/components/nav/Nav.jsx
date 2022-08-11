@@ -1,12 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getAllCountries, getCountriesByname } from "../../redux/actions";
 import "./Nav.css";
 
 const Nav = (props) => {
   const [inputValue, setInputValue] = useState("");
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     setInputValue(() => e.target.value);
   };
+
+  useEffect(() => {
+    if (inputValue !== "") {
+      dispatch(getCountriesByname(inputValue));
+    } else {
+      dispatch(getAllCountries());
+    }
+  }, [inputValue]);
 
   const clearText = () => {
     console.log(inputValue);

@@ -1,25 +1,28 @@
 import React from "react";
+import Cards from "../../components/cards/Cards";
+import Filters from "../../components/filters/Filters";
 import Nav from "../../components/nav/Nav";
 import "./Main.css";
 
-// 1. nav
-// 1.1. logo
-// 1.2. search
-// 1.3. info
-// 1.4. crear actividad
-// 2. filters
-// 3. card
-// 4. cards
 // 5. paginado
 
 const Main = (props) => {
   return (
     <div className="bkg-main">
-      <header>
-        <Nav></Nav>
-      </header>
-
-      
+      <div className="grid-main">
+        <header>
+          <Nav></Nav>
+        </header>
+        <div className="central-view">
+          <div>
+            <Filters></Filters>
+          </div>
+          <div>
+            <Cards></Cards>
+          </div>
+        </div>
+        <div className="pagination">Paginado</div>
+      </div>
     </div>
   );
 };

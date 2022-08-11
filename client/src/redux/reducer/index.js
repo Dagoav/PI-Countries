@@ -1,34 +1,66 @@
-import { GET_ALL_HOUSES, CREATE_HOUSE, GET_HOUSE, DELETE_HOUSE } from '../actions/index.js'
-// Importa las actions types que necesites acá:
 
 const initialState = {
-  houses: [],
-  house: {},
+  countries: [],
+  filter: [],
+  activities: [],
+  continents: []
 };
+
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    // Acá va tu código:
-    case GET_ALL_HOUSES:
+    case "GET_ALL_COUNTRIES":
       return {
         ...state,
-        houses: action.payload
+        countries: action.payload
       }
-    case GET_HOUSE:
+    case "GET_COUNTRIES_BYNAME":
       return {
         ...state,
-        house: action.payload
+        countries: action.payload
       }
-    case CREATE_HOUSE:
+
+    case "GET_ALL_ACTIVITIES":
       return {
         ...state,
-        houses: [...state.houses, action.payload]
+        activities: action.payload
       }
-    case DELETE_HOUSE:
+    case "GET_ALL_CONTINENTS":
       return {
         ...state,
-        houses: state.houses.filter(house => house.id !== action.payload)
+        continents: action.payload
       }
+
+    // filters
+    case "ORDER_BY_CONTINENTS":
+      return {
+        ...state,
+        countries: action.payload,
+      }
+    case "ORDER_BY_NAME":
+      return {
+        ...state,
+        filter: action.payload,
+      }
+    case "ORDER_BY_POPULATION":
+      return {
+        ...state,
+        filter: action.payload,
+      }
+
+
+
+
+    // case CREATE_HOUSE:
+    //   return {
+    //     ...state,
+    //     houses: [...state.houses, action.payload]
+    //   }
+    // case DELETE_HOUSE:
+    //   return {
+    //     ...state,
+    //     houses: state.houses.countries(house => house.id !== action.payload)
+    //   }
     default: return state
 
   };
