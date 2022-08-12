@@ -1,6 +1,10 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { getAllCountries, orderByContinents } from "../../redux/actions";
+import {
+  getAllCountries,
+  orderByContinents,
+  setPaginationParams,
+} from "../../redux/actions";
 import "./SelectContintient.css";
 
 const SelectContinent = (props) => {
@@ -11,6 +15,7 @@ const SelectContinent = (props) => {
   const handleSelect = (e) => {
     let selectValue = selectElement.current.value;
     console.log(e.target.name, selectValue);
+    dispatch(setPaginationParams({ start: 0, end: 9 }));
     if (selectValue === "all") {
       dispatch(getAllCountries());
     } else {

@@ -1,27 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Cards from "../../components/cards/Cards";
 import Filters from "../../components/filters/Filters";
 import Nav from "../../components/nav/Nav";
+import Pagination from "../../components/pagination/Pagination";
 import "./Main.css";
 
 // 5. paginado
 
-const Main = (props) => {
+const Main = () => {
   return (
     <div className="bkg-main">
       <div className="grid-main">
         <header>
-          <Nav></Nav>
+          <Nav />
         </header>
         <div className="central-view">
           <div>
-            <Filters></Filters>
+            <Filters />
           </div>
           <div>
-            <Cards></Cards>
+            <Cards />
           </div>
         </div>
-        <div className="pagination">Paginado</div>
+        <div className="pagination">
+          <Pagination pageSize={10} />
+        </div>
       </div>
     </div>
   );

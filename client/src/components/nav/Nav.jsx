@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getAllCountries, getCountriesByname } from "../../redux/actions";
 import "./Nav.css";
@@ -27,7 +28,9 @@ const Nav = (props) => {
   return (
     <div className="navbar">
       <div className="logo">
-        <span className="material-symbols-outlined earth-logo">public</span>
+        <Link to={"/"}>
+          <span className="material-symbols-outlined earth-logo">public</span>
+        </Link>
       </div>
       <div className="search">
         <input
@@ -51,7 +54,9 @@ const Nav = (props) => {
       </div>
       <div className="infoBox">
         <button className="btn-nav">Info</button>
-        <button className="btn-nav">Crear Actividad</button>
+        <Link to="/formActivity">
+          <button className="btn-nav">Crear Actividad</button>
+        </Link>
       </div>
     </div>
   );

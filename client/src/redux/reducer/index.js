@@ -1,9 +1,10 @@
 
 const initialState = {
   countries: [],
-  filter: [],
   activities: [],
-  continents: []
+  continents: [],
+  filterState: {},
+  pagination_params: {}
 };
 
 
@@ -40,14 +41,22 @@ const rootReducer = (state = initialState, action) => {
     case "ORDER_BY_NAME":
       return {
         ...state,
-        filter: action.payload,
+        filterState: action.payload,
       }
     case "ORDER_BY_POPULATION":
       return {
         ...state,
-        filter: action.payload,
+        filterState: action.payload,
       }
 
+
+    // pagination 
+
+    case "SET_PAGINATION":
+      return {
+        ...state,
+        pagination_params: action.payload,
+      }
 
 
 

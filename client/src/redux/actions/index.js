@@ -1,7 +1,7 @@
 const backendURL = "http://127.0.0.1:3001";
 
 export const getAllCountries = () => dispatch => {
-    return fetch(`${backendURL}/countries?size=9`)
+    return fetch(`${backendURL}/countries`)
         .then(response => response.json())
         .then(countries => {
             dispatch({ type: "GET_ALL_COUNTRIES", payload: countries })
@@ -58,6 +58,20 @@ export const orderByPopulation = (order) => {
         payload: order
     }
 }
+
+
+
+
+
+// pagination
+
+export const setPaginationParams = (parameters) => {
+    return {
+        type: "SET_PAGINATION",
+        payload: parameters
+    }
+}
+
 
 
 

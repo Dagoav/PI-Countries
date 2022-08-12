@@ -32,33 +32,28 @@ const sortPopDESC = (array) => {
 }
 
 
-export const applyFilterName = (option, root, copy) => {
-    let result
-    if (option === "none") {
-        result = root;
+export const applyFilter = (state, countries) => {
+    let copyCountries = Array.from(countries);
+    let filterCards = [];
+
+    if (state.hasOwnProperty("order")) {
+        if (state.value === "ASC") {
+            filterCards = sortNameASC(copyCountries);
+        } else if (state.value === "DESC") {
+            filterCards = sortNameDESC(copyCountries);
+        } else {
+            filterCards = countries
+        }
+    } else if (state.hasOwnProperty("population")) {
+        if (state.value === "ASC") {
+            filterCards = sortPopASC(copyCountries);
+        } else if (state.value === "DESC") {
+            filterCards = sortPopDESC(copyCountries);
+        } else {
+            filterCards = countries
+        }
     } else {
-        result =
-            option === "ASC"
-                ? sortNameASC(copy)
-                : sortNameDESC(copy);
+        filterCards = countries
     }
-
-    return result
+    return filterCards;
 }
-
-export const applyFilterPop = (option, root, copy) => {
-    let result
-    if (option === "none") {
-        result = root;
-        return;
-    } else {
-        result =
-            option === "ASC"
-                ? sortPopASC(copy)
-                : sortPopDESC(copy);
-    }
-
-    return result
-}
-
-

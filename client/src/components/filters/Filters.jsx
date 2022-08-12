@@ -16,7 +16,6 @@ const Filters = (props) => {
 
   const continents = useSelector((state) => state.continents);
   const stateAct = useSelector((state) => state.activities);
-  let opActivities = stateAct.map((act) => act.name);
 
   return (
     <div className="filters">

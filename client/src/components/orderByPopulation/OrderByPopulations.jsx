@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { orderByPopulation } from "../../redux/actions";
+import { orderByPopulation, setPaginationParams } from "../../redux/actions";
+
 import "./OrderByPopulation.css";
 
 const OrderByPopulation = ({ title, name, options }) => {
@@ -13,6 +14,7 @@ const OrderByPopulation = ({ title, name, options }) => {
 
   useEffect(() => {
     dispatch(orderByPopulation(select));
+    dispatch(setPaginationParams({ start: 0, end: 9 }));
   }, [select]);
 
   const handleSelect = (e) => {
