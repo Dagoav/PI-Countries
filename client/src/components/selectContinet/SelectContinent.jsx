@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import {
   getAllCountries,
@@ -7,13 +7,11 @@ import {
 } from "../../redux/actions";
 import "./SelectContintient.css";
 
-const SelectContinent = (props) => {
-  const { title, name, options } = props;
+const SelectContinent = ({ title, name, options }) => {
   const dispatch = useDispatch();
-  const selectElement = useRef();
 
   const handleSelect = (e) => {
-    let selectValue = selectElement.current.value;
+    let selectValue = e.target.value;
     console.log(e.target.name, selectValue);
     dispatch(setPaginationParams({ start: 0, end: 9 }));
     if (selectValue === "all") {
@@ -30,17 +28,14 @@ const SelectContinent = (props) => {
           <span> {title ? `${title}: ` : "someLabel"} </span>
         </div>
         <div className="boxSelect">
-          <select
-            ref={selectElement}
-            name={name}
-            onChange={(e) => handleSelect(e)}
-          >
+          <select name={name} onChange={(e) => handleSelect(e)}>
             <option value="all">Todos</option>
-            {options.map((op, i) => (
-              <option value={op} key={`${op}-${i}`}>
-                {op}
-              </option>
-            ))}
+            {options &&
+              options.map((op, i) => (
+                <option value={op} key={`${op}-${i}`}>
+                  {op}
+                </option>
+              ))}
           </select>
         </div>
       </div>

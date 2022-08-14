@@ -2,9 +2,10 @@
 const initialState = {
   countries: [],
   activities: [],
+  activity: {},
   continents: [],
   filterState: {},
-  pagination_params: {}
+  pagination_params: {},
 };
 
 
@@ -21,19 +22,33 @@ const rootReducer = (state = initialState, action) => {
         countries: action.payload
       }
 
-    case "GET_ALL_ACTIVITIES":
-      return {
-        ...state,
-        activities: action.payload
-      }
     case "GET_ALL_CONTINENTS":
       return {
         ...state,
         continents: action.payload
       }
 
+    // activities 
+    case "GET_ALL_ACTIVITIES":
+      return {
+        ...state,
+        activities: action.payload
+      }
+
+    case "POST_ACTIVITY":
+      return {
+        ...state,
+        activity: action.payload
+      }
+
+
     // filters
     case "ORDER_BY_CONTINENTS":
+      return {
+        ...state,
+        countries: action.payload,
+      }
+    case "ORDER_BY_ACTIVITY":
       return {
         ...state,
         countries: action.payload,
@@ -59,7 +74,6 @@ const rootReducer = (state = initialState, action) => {
       }
 
 
-
     // case CREATE_HOUSE:
     //   return {
     //     ...state,
@@ -71,7 +85,6 @@ const rootReducer = (state = initialState, action) => {
     //     houses: state.houses.countries(house => house.id !== action.payload)
     //   }
     default: return state
-
   };
 };
 

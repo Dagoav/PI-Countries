@@ -6,9 +6,13 @@ const { Activity, Country, country_activity } = require('../db.js')
 
 router.get("/", async (req, res) => {
     try {
-        const activities = await Activity.findAll()
+        const activities = await Activity.findAll({
+            order: [
+                ['name', 'ASC']
+            ]
+        })
         res.json(activities)
-    } catch (error) {   
+    } catch (error) {
         res.status(500).send(error);
     }
 })
@@ -30,61 +34,60 @@ router.post("/", async (req, res) => {
     }
 })
 
-router.post("/byCountry", async (req, res) => {
-    let { code, id } = req.body
-    let result = {
-        success: false,
-        msg: "",
-        content: ""
-    }
+// router.post("/byCountry", async (req, res) => {
+//     let { code, id } = req.body
+//     let result = {
+//         success: false,
+//         msg: "",
+//         content: ""
+//     }
 
-    try {
-        const activity = await Activity.findOne({
-            where: { id: Number(id) }
-        });
-
-        const country = await Country.findOne({
-            where: { id: code.toUpperCase() }
-        });
-
-
-        if (activity && country) {
-            const activityBycountry = await country_activity.create({
-                countryId: code,
-                activityId: id
-            })
-
-            result.success = true;
-            result.msg = `Actividad correctamente agregada a ${country.name}`
-            result.content = activityBycountry
-            res.json(result)
-        } else {
-            res.json(result)
-        }
-
-        res.json(result)
-    } catch (error) {
-        res.status(500).send(error)
-    }
-})
-
-// router.post("/", async (req, res) => {
-//     const {name, difficulty, duration, season, countriesId} = req.body;
 //     try {
-//         const newActivity = await Activity.create({
-//             name: name,
-//             difficulty: difficulty,
-//             duration: duration,
-//             season: season,
+//         const activity = await Activity.findOne({
+//             where: { id: Number(id) }
 //         });
 
-//         newActivity.addCountry(countriesId);
-//         // res.json(newActivity);
-//         // status 201 -> creado
-//         res.status(201).send(newActivity);
-//     } catch(e) {
-//         res.status(500).send(e);
+//         const country = await Country.findOne({
+//             where: { id: code.toUpperCase() }
+//         });
+
+
+//         if (activity && country) {
+//             const activityBycountry = await country_activity.create({
+//                 countryId: code,
+//                 activityId: id
+//             })
+
+//             result.success = true;
+//             result.msg = `Actividad correctamente agregada a ${country.name}`
+//             result.content = activityBycountry
+//             res.json(result)
+//         } else {
+//             res.json(result)
+//         }
+
+//         res.json(result)
+//     } catch (error) {
+//         res.status(500).send(error)
 //     }
-// });
+// })
+
+router.post("/byCountry", async (req, res) => {
+    const { name, dificulty, duration, season, countries } = req.body;
+    console.log(req.body);
+    try {
+        const newActivity = await Activity.create({
+            name,
+            dificulty,
+            duration,
+            season
+        });
+
+        newActivity.addCountry(countries);
+        res.status(201).json(newActivity);
+    } catch (e) {
+        res.status(500).json(e);
+    }
+});
 
 module.exports = router;

@@ -34,13 +34,40 @@ export const getContinents = () => dispatch => {
         })
 };
 
-// filters
+// Create activity
+export const postActivity = (_body) => dispatch => {
+    return fetch(`${backendURL}/activities/byCountry`,
+        {
+            method: "POST",
+            body: JSON.stringify(_body),
+            headers: { "Content-type": "application/json; charset=UTF-8" }
+        })
+        .then(response => response.json())
+        .then(newActivity => {
+            if (newActivity) {
+                dispatch({ type: "POST_ACTIVITY", payload: newActivity })
 
+            }
+            return newActivity;
+        })
+
+};
+
+
+// filters
 export const orderByContinents = (continent) => dispatch => {
     return fetch(`${backendURL}/countries/byContinent?name=${continent}`)
         .then(response => response.json())
         .then(continents => {
             dispatch({ type: "ORDER_BY_CONTINENTS", payload: continents })
+        })
+}
+
+export const orderByActivity = (activity) => dispatch => {
+    return fetch(`${backendURL}/countries/byActivity?name=${activity}`)
+        .then(response => response.json())
+        .then(countries => {
+            dispatch({ type: "ORDER_BY_ACTIVITY", payload: countries })
         })
 }
 

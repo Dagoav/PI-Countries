@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Cards from "../../components/cards/Cards";
 import Filters from "../../components/filters/Filters";
 import Nav from "../../components/nav/Nav";
@@ -13,7 +12,7 @@ const Main = () => {
     <div className="bkg-main">
       <div className="grid-main">
         <header>
-          <Nav />
+          <Nav searchBar={true} />
         </header>
         <div className="central-view">
           <div>

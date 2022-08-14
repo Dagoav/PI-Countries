@@ -9,9 +9,7 @@ router.get('/', async (req, res, next) => {
 
     try {
         if (size) {
-            const country = await Country.findAll({
-                limit: Number(size)
-            });
+            const country = await Country.findAll();
             res.json(country.length > 0 ? country : []);
         } else {
             next()
@@ -99,8 +97,19 @@ router.get('/byContinent', async (req, res) => {
 
 
 router.get('/byActivity', async (req, res) => {
+    const { name } = req.query
+
     try {
-        let allCountries = await Country.findAll({ include: { model: Activity } })
+        let allCountries = await Country.findAll({
+            include: {
+                model: Activity,
+                where: {
+                    name: {
+                        [Op.iLike]: `%${name}%`
+                    }
+                }
+            }
+        })
         if (allCountries.length > 0) {
             res.status(200).json(allCountries);
         }

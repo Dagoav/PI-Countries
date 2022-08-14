@@ -11,13 +11,13 @@ const Cards = (props) => {
   const countries = useSelector((state) => state.countries);
   const filterState = useSelector((state) => state.filterState);
   const pag_params = useSelector((state) => state.pagination_params);
-
   useEffect(() => {
     dispatch(getAllCountries());
   }, []);
 
   let filterCards = applyFilter(filterState, countries);
   let displayCards = pagination(pag_params, filterCards);
+
 
   return (
     <div className="gallery-cards">

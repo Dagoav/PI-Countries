@@ -3,19 +3,20 @@ import { useSelector, useDispatch } from "react-redux";
 import { getActivities, getContinents } from "../../redux/actions";
 import OrderByName from "../orderByName/OrderByName";
 import OrderByPopulation from "../orderByPopulation/OrderByPopulations";
+import SelectActivity from "../selectActivity/SelectAvtivity";
 import SelectContinent from "../selectContinet/SelectContinent";
 import "./Filters.css";
 
 const Filters = (props) => {
   const dispatch = useDispatch();
+  const continents = useSelector((state) => state.continents);
+  const activities = useSelector((state) => state.activities);
+  let activitiesName = activities.map((a) => a.name);
 
   useEffect(() => {
     dispatch(getActivities());
     dispatch(getContinents());
   }, []);
-
-  const continents = useSelector((state) => state.continents);
-  const stateAct = useSelector((state) => state.activities);
 
   return (
     <div className="filters">
@@ -24,25 +25,20 @@ const Filters = (props) => {
           title="Continente"
           name="continents"
           options={continents}
-        ></SelectContinent>
-
-        {/* <Select
+        />
+        <SelectActivity
           title="Actividad"
           name="activity"
-          options={opActivities}
-        ></Select> */}
+          options={activitiesName}
+        />
       </div>
       <div className="secondary-filter">
-        <OrderByName
-          title="Orden"
-          name="order"
-          options={["A-Z", "Z-A"]}
-        ></OrderByName>
+        <OrderByName title="Orden" name="order" options={["A-Z", "Z-A"]} />
         <OrderByPopulation
           title="Población"
           name="population"
           options={["Mayor a menor", "Menor a mayor"]}
-        ></OrderByPopulation>
+        />
       </div>
     </div>
   );

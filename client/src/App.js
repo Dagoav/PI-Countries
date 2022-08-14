@@ -9,10 +9,9 @@ import FormActivity from './pages/formActivity/Form-activity';
 function App() {
   return (
     <div className="App">
-
-      <Route exact path={"/"} component={Welcome} />
-      <Route exact path={"/home"} component={Main} />
       <Route exact path={"/formActivity"} component={FormActivity} />
+      <Route exact path={"/home"} component={Main} />
+      <Route exact path={"/"} component={Welcome} />
     </div>
   );
 }
