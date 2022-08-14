@@ -1,7 +1,7 @@
 .card-box {
   width: 170px;
-  position: relative;
   height: 175px;
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 20px 10px;
@@ -15,7 +15,7 @@
 
 .card-box:hover {
   cursor: pointer;
-  /* backdrop-filter: blur(3px); */
+  backdrop-filter: blur(1px);
   transition: ease 400ms;
 }
 
@@ -47,7 +47,11 @@
 }
 
 .country-name {
-  margin-top: 20px;
+  position: absolute;
+  top: 110px;
+  left: 0;
+  right: 0;
+  text-align: center;
   font-weight: 500;
 }
 

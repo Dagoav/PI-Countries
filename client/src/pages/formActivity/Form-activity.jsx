@@ -95,17 +95,21 @@ const FormActivity = (props) => {
 
   const removeCountry = (country) => {
     let findCountry = countries.find((c) => c.id === country.id);
+    let filterCountry = countriesList.filter((c) => c.id !== findCountry.id);
     SetCountriesList(countriesList.filter((c) => c.id !== findCountry.id));
+    Setvalues((prev) => ({
+      ...prev,
+      countries: filterCountry,
+    }));
   };
 
   const createActivity = (e) => {
     e.preventDefault();
     setSubmit(true);
     let objError = validate(values);
-    setError(objError);
+    setError(objError); 
 
     if (objError.error || objError.success === false) return;
-
     let sendValues = dispatch(postActivity(values));
     sendValues.then((res) => {
       if (res.hasOwnProperty("errors")) {

@@ -6,16 +6,17 @@ export const validate = (values) => {
 
     if (values.name === "") {
         result.error = true
-        result.name = "Name is required";
-    } else if (/[^a-zA-Z ]/.test(values.name)) {
+        result["name"] = "Name is required";
+    }
+    if (/[^a-zA-Z ]/.test(values.name)) {
         result.error = true
-        result.name = "Character special in name";
+        result["name"] = "Character special in name";
     }
 
     if (values.countries) {
         if (values.countries.length === 0) {
             result.error = true
-            result.country = "No Country Select";
+            result["country"] = "No Country Select";
         }
     }
 

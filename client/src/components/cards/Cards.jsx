@@ -18,13 +18,13 @@ const Cards = (props) => {
   let filterCards = applyFilter(filterState, countries);
   let displayCards = pagination(pag_params, filterCards);
 
-
   return (
     <div className="gallery-cards">
       {displayCards && displayCards.length > 0 ? (
         displayCards.map((c) => (
           <Card
             key={c.id}
+            id={c.id}
             name={c.name}
             continent={c.continent}
             flag={c.img_flag}

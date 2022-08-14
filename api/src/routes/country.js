@@ -98,20 +98,25 @@ router.get('/byContinent', async (req, res) => {
 
 router.get('/byActivity', async (req, res) => {
     const { name } = req.query
+    console.log(name);
 
     try {
-        let allCountries = await Country.findAll({
-            include: {
-                model: Activity,
-                where: {
-                    name: {
-                        [Op.iLike]: `%${name}%`
+        if (name && name !== "") {
+            let allCountries = await Country.findAll({
+                include: {
+                    model: Activity,
+                    where: {
+                        name: {
+                            [Op.iLike]: `%${name}%`
+                        }
                     }
                 }
-            }
-        })
-        if (allCountries.length > 0) {
-            res.status(200).json(allCountries);
+            })
+            res.status(200).json(allCountries && allCountries.length > 0 ? allCountries : []);
+
+        } else {
+            let allCountries = await Country.findAll({ include: Activity })
+            res.status(200).json(allCountries)
         }
     } catch (error) {
         res.status(400).json(error)

@@ -1,0 +1,28 @@
+.extra {
+  width: 170px;
+  position: relative;
+  top: 140px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  font-size: 14px;
+  padding: 10px 0px;
+  background-color: rgba(125, 136, 143, 0.15);
+  box-shadow: 2px 2px 8px 4px rgba(177, 175, 175, 0.486);
+  transition: all 800ms;
+}
+
+.extra:hover {
+  background-color: rgba(56, 58, 58, 0.74);
+  color: whitesmoke;
+  cursor: pointer;
+  transition: all 800ms;
+}
+
+.extra-title {
+  margin: 4px 0px;
+}
+
+.extra-name {
+  font-weight: 500;
+}

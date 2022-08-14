@@ -13,6 +13,7 @@ const Filters = (props) => {
   const activities = useSelector((state) => state.activities);
   let activitiesName = activities.map((a) => a.name);
 
+
   useEffect(() => {
     dispatch(getActivities());
     dispatch(getContinents());

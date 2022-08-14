@@ -1,9 +1,21 @@
 import React from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Card.css";
+import ExtraInfo from "./extra/Extra-info";
 
-const Card = ({ name, continent, flag }) => {
+const Card = ({
+  name,
+  continent,
+  flag,
+  id,
+  extraInfo,
+  capital,
+  subregion,
+  population,
+  area,
+}) => {
   let circle = useRef();
 
   useEffect(() => {
@@ -35,23 +47,33 @@ const Card = ({ name, continent, flag }) => {
         circle.current.style.backgroundColor = "red";
       }
     }
-  }, [circle]);
+  }, [continent]);
 
   return (
     <div className="card-box">
-      <div className="flag-box">
-        <img src={flag} alt="flag" />
-      </div>
+      <Link to={`/cardDetail/${id}`}>
+        <div className="flag-box">
+          <img src={flag} alt="flag" />
+        </div>
+      </Link>
       <div className="card-title-box">
-        <span className="country-name">{name ? name : "name"}</span>
+        <span className="country-name">{name}</span>
         <div className="continent">
           <span>Continent</span>
           <span className="continent-name">
-            {continent ? continent : "continenteName"}
+            {continent ? continent : "not Continent"}
           </span>
         </div>
         <span ref={circle} className="circleColor"></span>
       </div>
+      {extraInfo && (
+        <ExtraInfo
+          capital={capital}
+          subregion={subregion}
+          population={population}
+          area={area}
+        />
+      )}
     </div>
   );
 };

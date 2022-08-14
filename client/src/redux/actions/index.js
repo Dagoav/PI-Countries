@@ -17,6 +17,14 @@ export const getCountriesByname = (name) => dispatch => {
         .catch((response) => console.log(response))
 };
 
+export const getCountryDetail = (id) => dispatch => {
+    return fetch(`${backendURL}/countries/${id}`)
+        .then(response => response.json())
+        .then(country => {
+            dispatch({ type: "GET_COUNTRY_DETAIL", payload: country })
+        })
+};
+
 
 export const getActivities = () => dispatch => {
     return fetch(`${backendURL}/activities`)
@@ -86,12 +94,7 @@ export const orderByPopulation = (order) => {
     }
 }
 
-
-
-
-
 // pagination
-
 export const setPaginationParams = (parameters) => {
     return {
         type: "SET_PAGINATION",
