@@ -1,0 +1,34 @@
+.notification-container {
+  width: 270px;
+  height: 20px;
+  position: absolute;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: rgba(49, 48, 48, 0.904);
+  box-shadow: 2px 0px 8px 2px rgba(49, 48, 48, 0.39);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.text {
+  width: 250px;
+  position: relative;
+  bottom: 14px;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: start;
+  color: aquamarine;
+}
+
+.icon-popup-remove {
+  position: absolute;
+  font-size: 18px;
+  top: 6px;
+  right: 6px;
+  color: rgb(240, 239, 239);
+  cursor: pointer;
+  user-select: none;
+  z-index: 1;
+}

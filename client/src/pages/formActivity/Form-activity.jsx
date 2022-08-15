@@ -5,6 +5,7 @@ import { validate } from "./validate.js";
 import Nav from "../../components/nav/Nav";
 import ToolTip from "../../components/tooltip/ToolTip";
 import "./Form-activity.css";
+import Notification from "../../components/notification/Notification";
 
 const sortNameASC = (array) => {
   return array.sort((a, b) => {
@@ -22,6 +23,7 @@ const FormActivity = (props) => {
   const seasons = ["Spring", "Summer", "Autumn", "Winter"];
   const selectSeason = useRef();
   const [isSelected, setIsSelected] = useState(false);
+  const [sendNotification, setSendNotification] = useState("");
   const [error, setError] = useState({
     name: "",
     country: "",
@@ -120,8 +122,9 @@ const FormActivity = (props) => {
         alert(res.original.detail);
         return;
       }
-      resetState();
       console.log(values);
+      setSendNotification(() => values.name);
+      resetState();
     });
   };
 
@@ -249,6 +252,9 @@ const FormActivity = (props) => {
           </button>
         </form>
       </div>
+      {sendNotification !== "" && (
+        <Notification message={`Actividad ${sendNotification} creada`} />
+      )}
     </div>
   );
 };

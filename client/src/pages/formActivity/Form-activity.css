@@ -3,8 +3,8 @@
   width: 100%;
   background: url("../../assets/135.jpg");
   background-repeat: no-repeat;
-  background-size: contain;
-  background-position: 20% 10px;
+  background-size: 550px;
+  background-position: 15% 80px;
   background-attachment: fixed;
   filter: grayscale(0.2);
   overflow: hidden;
