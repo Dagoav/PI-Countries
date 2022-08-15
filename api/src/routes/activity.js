@@ -34,6 +34,23 @@ router.post("/", async (req, res) => {
     }
 })
 
+router.post("/byCountry", async (req, res) => {
+    const { name, dificulty, duration, season, countries } = req.body;
+    try {
+        const newActivity = await Activity.create({
+            name,
+            dificulty,
+            duration,
+            season
+        });
+
+        newActivity.addCountry(countries);
+        res.status(201).json(newActivity);
+    } catch (e) {
+        res.status(500).json(e);
+    }
+});
+
 // router.post("/byCountry", async (req, res) => {
 //     let { code, id } = req.body
 //     let result = {
@@ -71,23 +88,5 @@ router.post("/", async (req, res) => {
 //         res.status(500).send(error)
 //     }
 // })
-
-router.post("/byCountry", async (req, res) => {
-    const { name, dificulty, duration, season, countries } = req.body;
-    console.log(req.body);
-    try {
-        const newActivity = await Activity.create({
-            name,
-            dificulty,
-            duration,
-            season
-        });
-
-        newActivity.addCountry(countries);
-        res.status(201).json(newActivity);
-    } catch (e) {
-        res.status(500).json(e);
-    }
-});
 
 module.exports = router;

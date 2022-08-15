@@ -2,11 +2,16 @@
   width: 170px;
   position: relative;
   top: 140px;
+  left: 0;
+  right: 0;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 8px;
-  font-size: 14px;
-  padding: 10px 0px;
+  font-size: 13px;
+  padding: 5px;
   background-color: rgba(125, 136, 143, 0.15);
   box-shadow: 2px 2px 8px 4px rgba(177, 175, 175, 0.486);
   transition: all 800ms;

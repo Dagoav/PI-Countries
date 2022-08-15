@@ -21,39 +21,54 @@ const FormActivity = (props) => {
 
   const seasons = ["Spring", "Summer", "Autumn", "Winter"];
   const selectSeason = useRef();
-  const selectCountry = useRef();
-  const [submit, setSubmit] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
   const [error, setError] = useState({
     name: "",
     country: "",
   });
-  const [countriesList, SetCountriesList] = useState([]);
-  const [values, Setvalues] = useState({
+  const [countriesList, setCountriesList] = useState([]);
+
+  const initialState = {
     name: "",
     dificulty: 1,
     duration: 1,
     season: "spring",
     countries: [],
-  });
+  };
+
+  const [values, setValues] = useState(initialState);
 
   useEffect(() => {
-    setSubmit(false);
     dispatch(getAllCountries());
+    resetState();
   }, []);
 
   useEffect(() => {
     let display = document.querySelector(".displayBox");
     display.scrollTo(0, display.scrollHeight);
 
-    if (submit) {
+    // add countriesList id to values
+    let idCountriesList = countriesList.map((c) => c.id);
+    setValues((prev) => ({
+      ...prev,
+      ["countries"]: idCountriesList,
+    }));
+
+    // validate country errors
+    if (isSelected) {
       let objError = validate({ ...values, ["countries"]: countriesList });
       setError({ ...error, ["country"]: objError.country });
     }
   }, [countriesList]);
 
+  const resetState = () => {
+    setValues({ ...initialState });
+    setIsSelected(false);
+    setCountriesList([]);
+  };
+
   const handleName = (e) => {
-    // Setvalues((prev) => prev, (values.name = e.target.value));
-    Setvalues((prev) => ({
+    setValues((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
@@ -62,53 +77,42 @@ const FormActivity = (props) => {
   };
 
   const handleDificult = (e) => {
-    Setvalues((prev) => ({
+    setValues((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
 
   const handleDuration = (e) => {
-    Setvalues((prev) => ({
+    setValues((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
     }));
   };
 
   const handleSelectSeason = (e) => {
-    console.log(selectSeason.current.value);
-    Setvalues((prev) => prev, (values.dificult = e.target.value));
+    setValues((prev) => prev, (values.dificult = e.target.value));
   };
 
   const handleSelectCountry = (e) => {
-    let selectValue = selectCountry.current.value;
+    setIsSelected(true);
+    let selectValue = e.target.value;
     let findCountry = countries.find((c) => c.id === selectValue);
     if (countriesList.includes(findCountry)) return;
 
-    SetCountriesList((prev) => [...prev, findCountry]);
-
-    Setvalues((prev) => ({
-      ...prev,
-      [e.target.name]: [...prev.countries, findCountry.id],
-    }));
+    setCountriesList((prev) => [...prev, findCountry]);
   };
 
   const removeCountry = (country) => {
     let findCountry = countries.find((c) => c.id === country.id);
-    let filterCountry = countriesList.filter((c) => c.id !== findCountry.id);
-    SetCountriesList(countriesList.filter((c) => c.id !== findCountry.id));
-    Setvalues((prev) => ({
-      ...prev,
-      countries: filterCountry,
-    }));
+    setCountriesList(countriesList.filter((c) => c.id !== findCountry.id));
   };
 
   const createActivity = (e) => {
     e.preventDefault();
-    setSubmit(true);
+    // validate errors
     let objError = validate(values);
-    setError(objError); 
-
+    setError(objError);
     if (objError.error || objError.success === false) return;
     let sendValues = dispatch(postActivity(values));
     sendValues.then((res) => {
@@ -116,17 +120,9 @@ const FormActivity = (props) => {
         alert(res.original.detail);
         return;
       }
-      alert(`Actividad ${values.name} creada`);
+      resetState();
+      console.log(values);
     });
-    Setvalues({
-      name: "",
-      dificulty: 1,
-      duration: 1,
-      season: "spring",
-      countries: [],
-    });
-    SetCountriesList([]);
-    setSubmit(false);
   };
 
   return (
@@ -211,7 +207,6 @@ const FormActivity = (props) => {
               Country:
             </label>
             <select
-              ref={selectCountry}
               className="custom-select"
               name={"countries"}
               onChange={(e) => handleSelectCountry(e)}

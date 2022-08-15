@@ -25,7 +25,7 @@ const ExtraInfo = ({ capital, subregion, population, area }) => {
 
       <div className="extra-title">
         <span>Area: </span>
-        <span className="extra-name">{area ? area : "Not area"}Km2</span>
+        <span className="extra-name">{area ? area : "Not area"} Km2</span>
       </div>
     </div>
   );

@@ -22,7 +22,6 @@ const CardDetail = () => {
     area,
   } = country;
 
-  console.log(country);
   useEffect(() => {
     dispatch(getCountryDetail(code));
   }, []);

@@ -18,17 +18,16 @@
 }
 
 .container-cards {
+  height: 380px;
   position: absolute;
   display: flex;
   top: 100px;
-  right: 100px;
-  font-size: 14px;
-  backdrop-filter: blur(3px);
+  right: 110px;
+  font-size: 13px;
   transition: all ease 500ms;
 }
 
 .container-cards:hover {
-  backdrop-filter: blur(1px);
   transition: all ease 500ms;
 }
 
@@ -39,7 +38,6 @@
   border-radius: 8px;
   padding: 20px 10px;
   background-color: rgba(228, 230, 231, 0.705);
-  backdrop-filter: blur(2px);
   box-shadow: 2px 2px 8px 4px rgba(177, 175, 175, 0.486);
   overflow-y: auto;
 }
@@ -71,19 +69,8 @@
 
 @media (max-width: 600px) {
   .container-cards {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    top: 70px;
-    left: 0;
+    left: 20px;
     right: 0;
-  }
-
-  .activity-detail {
-    height: 140px;
-    position: relative;
-    top: 170px;
+    text-align: center;
   }
 }
