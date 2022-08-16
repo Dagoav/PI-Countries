@@ -13,9 +13,7 @@ const Notification = ({
   useEffect(() => {
     notification.current.style[horizontalPosition] = "18px";
     notification.current.style[verticalPosition] = "18px";
-  }, [notification]);
 
-  useEffect(() => {
     if (duration !== 0) {
       setTimeout(() => {
         notification.current.style.display = "none";

@@ -19,9 +19,9 @@ const OrderByPopulation = ({ title, name, options }) => {
 
   const handleSelect = (e) => {
     let value = selectElement.current.value;
-    if (value === "Menor a mayor") {
+    if (value === "smallest to largest") {
       value = "ASC";
-    } else if (value === "Mayor a menor") {
+    } else if (value === "largest to smallest") {
       value = "DESC";
     } else {
       value = "none";

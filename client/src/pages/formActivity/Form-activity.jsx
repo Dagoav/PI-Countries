@@ -248,12 +248,12 @@ const FormActivity = (props) => {
             type="submit"
             onClick={(e) => createActivity(e)}
           >
-            Crear
+            Create
           </button>
         </form>
       </div>
       {sendNotification !== "" && (
-        <Notification message={`Actividad ${sendNotification} creada`} />
+        <Notification message={`Activity ${sendNotification} created`} />
       )}
     </div>
   );

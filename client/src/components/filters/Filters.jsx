@@ -13,7 +13,6 @@ const Filters = (props) => {
   const activities = useSelector((state) => state.activities);
   let activitiesName = activities.map((a) => a.name);
 
-
   useEffect(() => {
     dispatch(getActivities());
     dispatch(getContinents());
@@ -23,22 +22,22 @@ const Filters = (props) => {
     <div className="filters">
       <div className="primary-filter">
         <SelectContinent
-          title="Continente"
+          title="Continents"
           name="continents"
           options={continents}
         />
         <SelectActivity
-          title="Actividad"
+          title="Activities"
           name="activity"
           options={activitiesName}
         />
       </div>
       <div className="secondary-filter">
-        <OrderByName title="Orden" name="order" options={["A-Z", "Z-A"]} />
+        <OrderByName title="Order" name="order" options={["A-Z", "Z-A"]} />
         <OrderByPopulation
-          title="Población"
+          title="Population"
           name="population"
-          options={["Mayor a menor", "Menor a mayor"]}
+          options={["largest to smallest", "smallest to largest"]}
         />
       </div>
     </div>

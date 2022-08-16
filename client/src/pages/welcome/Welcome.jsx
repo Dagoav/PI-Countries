@@ -9,7 +9,7 @@ const Welcome = (props) => {
         <h1 className="title-welcome">Henry Countries</h1>
         <Link to="/home">
           <button className="btn-w">
-            Ingresar
+            Let's start!
             <span className="material-symbols-outlined arrow_forward">
               arrow_forward_ios
             </span>

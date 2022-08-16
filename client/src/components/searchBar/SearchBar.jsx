@@ -27,7 +27,7 @@ const SearchBar = () => {
   return (
     <div className="search">
       <input
-        placeholder="Buscar un país..."
+        placeholder="Search country..."
         type="text"
         id="inputSearch"
         onChange={handleChange}
