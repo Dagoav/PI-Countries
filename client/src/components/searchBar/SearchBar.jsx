@@ -32,6 +32,7 @@ const SearchBar = () => {
         id="inputSearch"
         onChange={handleChange}
         value={inputValue}
+        autoComplete="off"
       />
       {inputValue !== "" && (
         <span

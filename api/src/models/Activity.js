@@ -27,6 +27,7 @@ module.exports = (sequelize) => {
             unique: 'compositeIndex',
             validate: {
                 min: 1,
+                max: 24,
             }
         },
         season: {

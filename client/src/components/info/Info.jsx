@@ -10,7 +10,6 @@ import github_png from "../../assets/tech/github.png";
 import "./Info.css";
 
 const Info = ({ handleClose, show, children }) => {
-  console.log(show);
   const showHideClassName = show ? "modal display-block" : "modal display-none";
 
   return (

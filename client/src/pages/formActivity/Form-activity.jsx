@@ -115,6 +115,7 @@ const FormActivity = (props) => {
     // validate errors
     let objError = validate(values);
     setError(objError);
+    console.log(objError);
     if (objError.error || objError.success === false) return;
     let sendValues = dispatch(postActivity(values));
     sendValues.then((res) => {
@@ -146,6 +147,7 @@ const FormActivity = (props) => {
               value={values.name}
               placeholder="Ex: Football..."
               onChange={handleName}
+              autoComplete="off"
             />
             {error.name && <span className="error">{error.name}</span>}
           </div>
@@ -185,6 +187,9 @@ const FormActivity = (props) => {
               onChange={handleDuration}
             />
             <span className="sufix">Hrs</span>
+            {error.duration && (
+              <span className="errorDuration">{error.duration}</span>
+            )}
           </div>
           <div className="boxSelect">
             <label className="info" htmlFor="season">

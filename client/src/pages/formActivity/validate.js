@@ -21,6 +21,13 @@ export const validate = (values) => {
     }
 
 
+    if (values.duration) {
+        if (values.duration > 24) {
+            result.error = true
+            result["duration"] = "Max duration 24 hrs";
+        }
+    }
+
     if (result.error && !result.success) return result
 
     result.error = false

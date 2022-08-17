@@ -176,7 +176,8 @@
 }
 
 .error,
-.errorCountry {
+.errorCountry,
+.errorDuration {
   width: 70px;
   position: absolute;
   color: red;
@@ -186,6 +187,10 @@
 
 .errorCountry {
   top: 0px;
+  left: 240px;
+}
+.errorDuration {
+  top: 110px;
   left: 240px;
 }
 
