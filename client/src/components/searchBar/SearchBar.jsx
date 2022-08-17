@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getAllCountries, getCountriesByname } from "../../redux/actions";
+import {
+  getAllCountries,
+  getCountriesByname,
+  setPaginationParams,
+} from "../../redux/actions";
 import "./SearchBar.css";
 
 const SearchBar = () => {
@@ -14,6 +18,7 @@ const SearchBar = () => {
   useEffect(() => {
     if (inputValue !== "") {
       dispatch(getCountriesByname(inputValue));
+      dispatch(setPaginationParams({ start: 0, end: 9 }));
     } else {
       dispatch(getAllCountries());
     }

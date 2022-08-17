@@ -4,7 +4,7 @@ export const validate = (values) => {
         success: false
     };
 
-    if (values.name === "") {
+    if (values.name === "" || values.name.trim().length === 0) {
         result.error = true
         result["name"] = "Name is required";
     }

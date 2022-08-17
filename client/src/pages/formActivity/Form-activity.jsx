@@ -113,6 +113,7 @@ const FormActivity = (props) => {
   const createActivity = (e) => {
     e.preventDefault();
     // validate errors
+    console.log(values);
     let objError = validate(values);
     setError(objError);
     console.log(objError);
