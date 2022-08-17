@@ -56,6 +56,10 @@ const Info = ({ handleClose, show, children }) => {
           >
             Vector de parque isometrico creado por redgreystock - www.freepik.es
           </a>
+
+          <a href="https://www.freepik.es/vectores/error-web" target="_blank">
+            Vector de error web creado por storyset - www.freepik.es
+          </a>
         </div>
         <button className="btn-close-modal" type="button" onClick={handleClose}>
           Close
