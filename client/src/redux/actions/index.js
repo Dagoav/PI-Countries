@@ -101,28 +101,3 @@ export const setPaginationParams = (parameters) => {
         payload: parameters
     }
 }
-
-
-
-
-
-
-
-// let id = 3;
-
-// export const createHouse = (values) => {
-//     id = id + 1;
-//     values.id = id;
-//     return {
-//         type: CREATE_HOUSE,
-//         payload: values
-//     }
-// };
-
-
-// export const deleteHouse = (payload) => {
-//     return {
-//         type: DELETE_HOUSE,
-//         payload
-//     }
-// };
