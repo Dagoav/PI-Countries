@@ -1,33 +1,52 @@
 import React, { useEffect, useState } from "react";
-import { useRef } from "react";
+import { useHistory } from "react-router-dom";
 import "./Notification.css";
 
 const Notification = ({
   message,
   duration = 0,
-  horizontalPosition = "right",
-  verticalPosition = "bottom",
+  x = "right",
+  y = "bottom",
 }) => {
-  const notification = useRef();
+
+  const [display, setDisplay] = useState(true)
+  const history = useHistory();
 
   useEffect(() => {
-    notification.current.style[horizontalPosition] = "18px";
-    notification.current.style[verticalPosition] = "18px";
+    let notification = document.querySelector(".notification-container")
+    notification.style[x] = "18px";
+    notification.style[y] = "18px";
 
     if (duration !== 0) {
       setTimeout(() => {
-        notification.current.style.display = "none";
+        setDisplay(() => false)
       }, duration);
     }
-  }, []);
+  }, [])
+
+
+  useEffect(() => {
+    let notification = document.querySelector(".notification-container")
+    if (display) {
+      notification.classList.add("show")
+      notification.classList.remove("hide")
+    } if (!display) {
+      notification.classList.remove("show")
+      notification.classList.add("hide")
+    }
+  }, [display]);
 
   const close = (e) => {
-    notification.current.style.display = "none";
+    setDisplay(() => false)
+    history.push("/home");
   };
+
+
+  console.log(display);
 
   return (
     <>
-      <div className="notification-container" ref={notification}>
+      <div className="notification-container">
         <span
           className="material-symbols-outlined icon-popup-remove"
           onClick={(e) => close(e)}

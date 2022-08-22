@@ -4,8 +4,8 @@ import { getAllCountries, postActivity } from "../../redux/actions";
 import { validate } from "./validate.js";
 import Nav from "../../components/nav/Nav";
 import ToolTip from "../../components/tooltip/ToolTip";
-import "./Form-activity.css";
 import Notification from "../../components/notification/Notification";
+import "./Form-activity.css";
 
 const sortNameASC = (array) => {
   return array.sort((a, b) => {
@@ -43,6 +43,7 @@ const FormActivity = (props) => {
   useEffect(() => {
     dispatch(getAllCountries());
     resetState();
+    setSendNotification(() => "");
   }, []);
 
   useEffect(() => {
@@ -258,9 +259,15 @@ const FormActivity = (props) => {
           </button>
         </form>
       </div>
+
       {sendNotification !== "" && (
-        <Notification message={`Activity ${sendNotification} created`} />
+        <>
+          <Notification message={`Activity ${sendNotification} created`} />
+        </>
       )}
+
+
+
     </div>
   );
 };
