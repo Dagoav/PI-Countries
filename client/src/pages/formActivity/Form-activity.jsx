@@ -114,10 +114,8 @@ const FormActivity = (props) => {
   const createActivity = (e) => {
     e.preventDefault();
     // validate errors
-    console.log(values);
     let objError = validate(values);
     setError(objError);
-    console.log(objError);
     if (objError.error || objError.success === false) return;
     let sendValues = dispatch(postActivity(values));
     sendValues.then((res) => {
@@ -125,7 +123,6 @@ const FormActivity = (props) => {
         alert(res.original.detail);
         return;
       }
-      console.log(values);
       setSendNotification(() => values.name);
       resetState();
     });
@@ -170,6 +167,9 @@ const FormActivity = (props) => {
               step="1"
               onChange={handleDificult}
             />
+            {error.dificulty && (
+              <span className="errorDificulty">{error.dificulty}</span>
+            )}
           </div>
           <div>
             <label className="info" htmlFor="name">

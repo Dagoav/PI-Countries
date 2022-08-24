@@ -12,7 +12,6 @@ const SelectActivity = ({ title, name, options }) => {
 
   const handleSelect = (e) => {
     let selectValue = e.target.value;
-    console.log(e.target.name, selectValue);
     dispatch(setPaginationParams({ start: 0, end: 9 }));
     if (selectValue === "all") {
       dispatch(getAllCountries());

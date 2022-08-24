@@ -42,7 +42,6 @@ const Notification = ({
   };
 
 
-  console.log(display);
 
   return (
     <>

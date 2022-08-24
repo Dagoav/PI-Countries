@@ -28,12 +28,13 @@
 
 .form-activity form {
   height: 100%;
+  width: auto;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  margin-left: 80px;
+  padding-left: 50px;
 }
 
 .title {
@@ -43,12 +44,13 @@
 }
 
 .input {
+  width: 50px;
   border: none;
   border-radius: 8px;
   font-weight: 300;
   padding: 9px;
-  padding-left: 12px;
-  padding-right: 20px;
+  /* padding-left: 12px;
+  padding-right: 20px; */
   color: rgb(93, 122, 124);
   transition: ease-out 500ms;
   outline: none;
@@ -57,6 +59,7 @@
 
 .inputName,
 .inputName-error {
+  width: 180px;
   border: none;
   border-radius: 8px;
   font-weight: 300;
@@ -144,6 +147,7 @@
   width: 190px;
   height: 120px;
   overflow-y: auto;
+  padding-left: 40px;
 }
 
 .displayCards {
@@ -177,7 +181,8 @@
 
 .error,
 .errorCountry,
-.errorDuration {
+.errorDuration,
+.errorDificulty {
   width: 70px;
   position: absolute;
   color: red;
@@ -189,9 +194,15 @@
   top: 0px;
   left: 240px;
 }
+
 .errorDuration {
-  top: 110px;
+  top: 115px;
   left: 240px;
+}
+
+.errorDificulty {
+  top: 60px;
+  left: 200px;
 }
 
 @media (max-width: 600px) {

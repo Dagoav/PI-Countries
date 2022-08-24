@@ -98,7 +98,6 @@ router.get('/byContinent', async (req, res) => {
 
 router.get('/byActivity', async (req, res) => {
     const { name } = req.query
-    console.log(name);
 
     try {
         if (name && name !== "") {

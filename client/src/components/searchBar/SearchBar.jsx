@@ -25,7 +25,6 @@ const SearchBar = () => {
   }, [inputValue]);
 
   const clearText = () => {
-    console.log(inputValue);
     setInputValue(() => "");
   };
 

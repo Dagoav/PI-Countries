@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;800&display=swap");
 
 * {
-  font-family: Poppins;
+  font-family: Poppins, 'Trebuchet MS';
 }
 
 body {
@@ -21,7 +21,8 @@ code {
   font-family: "Material Symbols Outlined";
   font-weight: normal;
   font-style: normal;
-  font-size: 20px; /* Preferred icon size */
+  font-size: 20px;
+  /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;

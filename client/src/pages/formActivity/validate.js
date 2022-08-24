@@ -20,12 +20,28 @@ export const validate = (values) => {
         }
     }
 
-
     if (values.duration) {
         if (values.duration > 24) {
             result.error = true
             result["duration"] = "Max duration 24 hrs";
         }
+    }
+
+    if (!/^[0-9]+$/.test(values.duration)) {
+        result.error = true
+        result["duration"] = "Characters in duration";
+    }
+
+    if (values.dificulty) {
+        if (values.dificulty > 5) {
+            result.error = true
+            result["dificulty"] = "Max dificulty 5 hrs";
+        }
+    }
+
+    if (!/^[0-9]+$/.test(values.dificulty)) {
+        result.error = true
+        result["dificulty"] = "Characters in duration";
     }
 
     if (result.error && !result.success) return result
